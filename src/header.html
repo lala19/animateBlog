@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 页眉 start -->
+    <header class="am-g am-g-fixed blog-fixed top headerTop">
+        <!-- <div class="am-u-sm-4" style="color:#666;">
+            您好！欢迎来到
+            <span style="color: #10D07A">animateBlog</span>
+            [
+            <a href="./login.html">请登录</a>]&nbsp; [
+            <a href="./register.html">注册</a>]
+        </div>
+        <div class="am-u-sm-8 dictum" style="text-align:right;">
+            能说算不上什么，有本事就把你的代码给我看看。——Linus Torvalds，Linux 之父
+        </div> -->
+    </header>
+    <!-- 页眉 end -->
+
+    <!-- 导航 start -->
+    <nav class="am-g am-g-fixed blog-fixed blog-nav">
+
+        <div class="am-collapse am-topbar-collapse" id="blog-collapse">
+
+            <ul class="am-nav am-nav-pills am-topbar-nav navList">
+                <li class="am-active">
+                    <a href="./index.html">首页</a>
+                </li>
+                <li>
+                    <a href="article.html">Read</a>
+                </li>
+                <li>
+                    <a href="editor.html">新建</a>
+                </li>
+                <li>
+                    <a href="timeline.html">存档</a>
+                </li>
+                <!-- <li>
+                    <a href="timeline.html">存档</a>
+                </li> -->
+            </ul>
+            <form class="am-topbar-form am-topbar-right am-form-inline" role="search">
+                <div class="am-form-group">
+                    <input type="text" class="am-form-field am-input-sm" placeholder="搜索">
+                </div>
+            </form>
+        </div>
+    </nav>
+    <hr>
+
+    </div>
+    <!-- 导航 end -->
+    <script src="js/lib/jquery-cookie-1.0.0.js"></script>
+
+    <div class="scorllFixed">∧</div>
+    <script>
+        var str=document.location.href;
+        if(str.indexOf("Blog/src/index.html")>-1){
+            $(".navList").children("li:nth-of-type(1)").addClass("am-active").siblings("li").removeClass("am-active");
+        }else if(str.indexOf("Blog/src/article.html")>-1){
+            $(".navList").children("li:nth-of-type(2)").addClass("am-active").siblings("li").removeClass("am-active");
+        }else if(str.indexOf("Blog/src/editor.html")>-1||str.indexOf("Blog/src/editor.html")>-1){
+            $(".navList").children("li:nth-of-type(3)").addClass("am-active").siblings("li").removeClass("am-active");
+        }else if(str.indexOf("Blog/src/timeline.html")>-1){
+            $(".navList").children("li:nth-of-type(4)").addClass("am-active").siblings("li").removeClass("am-active");
+        }
+        $(function () {
+            $(".scorllFixed").click(function () {
+                console.log(this);
+                $("html,body").animate({
+                    scrollTop: 0
+                }, 500);
+            });
+            var objCookie = JSON.parse($.getCookie("userinfo") || "{}");
+            //            console.log(objCookie);
+            if (JSON.stringify(objCookie) != '{}') {                
+                var str = `<div class="am-u-sm-4" style="color:#666;">
+            您好！  <a href="javascript:void(0)">${objCookie.u_name}</a>欢迎你来到
+            <span style="color: #10D07A">animateBlog</span>
+            <a href="javascript:void(0)" style="color: #0094ff" class="logout">注销</a>
+        </div>
+        <div class="am-u-sm-8 dictum" style="text-align:right;">
+            能说算不上什么，有本事就把你的代码给我看看。——Linus Torvalds，Linux 之父
+        </div>`
+                $(".headerTop").html(str)
+            } else {
+                var str = `<div class="am-u-sm-4" style="color:#666;">
+            您好！欢迎来到
+            <span style="color: #10D07A">animateBlog</span>
+            [
+            <a href="./login.html">请登录</a>]&nbsp; [
+            <a href="./register.html">注册</a>]
+        </div>
+        <div class="am-u-sm-8 dictum" style="text-align:right;">
+            能说算不上什么，有本事就把你的代码给我看看。——Linus Torvalds，Linux 之父
+        </div>`
+                $(".headerTop").html(str)
+            }
+            $(".navList").children("li").on("click", function () {
+                $(this).addClass("am-active").siblings("li").removeClass("am-active");
+            });
+            $(".logout").on("click",function(){
+                $.removeCookie("userinfo");
+                window.location.href="index.html";
+            })
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,1 @@
+"use strict";$("#log-form")[0].onsubmit=function(){return $.ajax({url:"http://localhost:9000/reglog/login",type:"post",data:{u_name:$("#uname").val(),u_pwd:$("#upwd").val()}}).then(function(t){var a={u_name:$("#uname").val(),u_pwd:$("#upwd").val()};1==t.status?($.setCookie("userinfo",JSON.stringify(a)),alert(t.msg),window.location.href="index.html"):alert(t.msg)}),!1};

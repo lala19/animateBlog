@@ -1,0 +1,1 @@
+"use strict";$(function(){var t='\n    <iframe src="ueditor/update.html?id='+sessionStorage.getItem("editorid")+'" width="100%"\n    height="1300" frameborder="0" style="margin: 10px auto" scrolling="no"></iframe>';$(".ueditor").html(t)});
