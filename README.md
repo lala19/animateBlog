@@ -1,4 +1,4 @@
-## animate萌新代码
+## animate
 
 * 登录注册
 * 显示文章缩略
@@ -8,4 +8,5 @@
 * 个人信息修改
 ***
 
-nodejs+express
+服务端: nodejs+express
+ui 妹子ui
